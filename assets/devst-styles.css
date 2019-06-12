@@ -1,0 +1,4 @@
+.navmenu-item-parent:hover .navmenu-depth-2,
+.navmenu-item-parent:focus .navmenu-depth-2 {
+  display: block;
+}
