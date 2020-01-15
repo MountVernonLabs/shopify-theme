@@ -107,16 +107,52 @@
         {% endfor %}
 
         <div class="cart-total">
-
-          {% if section.settings.enable_order_notes %}
-            <div class="cart-ordernote">
-              <span class="cart-ordernote-heading">{{ 'cart.general.enter_order_note' | t }}</span>
-              <div class="form-field">
-                <textarea class="form-field-input form-field-textarea" name="note" id="cart-note">{{ cart.note }}</textarea>
-                <label class="form-field-title" for="cart-note">{{ 'cart.general.special_instructions' | t }}</label>
-              </div>
+		{% comment %}
+        	{% include 'gift-wrapping' %}
+        {% endcomment %}
+        
+          
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------>
+          <div class="nullsGiftContainer">
+            <div class="nullsSelectContainer">
+              <h3><span class="dev_headerText">{{ settings.nullsSelecttext }}</span></h3>
+                    {% for item in cart.items %}
+                        {% comment %}
+                        <script>
+                            console.log("{{  item.title }}/{{  item.product.id }}---{{ all_products[settings.nullsWrapP].title }}/{{ all_products[settings.nullsWrapP].id }}");
+                        </script>
+                        {% endcomment %}
+                        {% if item.product.id != all_products[settings.nullsWrapP].id  %}
+              				{% unless item.product.title contains 'Drop Ship' or item.product.tags contains 'No Gift Wrap' %}
+                        		<input class="devnullsSelectPro" type="radio" name="product" value="{{ item.title }}">{{ item.title }}<br>
+              				{% endunless %}
+                        {% endif %}
+                    {% endfor %}
             </div>
-          {% endif %}
+            <div class="nullsWrapContainer">
+                <div class="nullsWrapImageDiv"><img class="nullsWrapImage"
+                                                    src="{{ settings.nullsWrapPDummy | img_url:"x300" }}"></div>
+                <div class="nullsWrapPrice">N/A</div>
+              <input class="devnullsWrapSelect" type="radio" name="occasion" value="none" data-price="N/A" checked data-image="{{ settings.nullsWrapPDummy | img_url:"x300" }}"><span class="dev_headerText">{{ settings.nullsWrapPtext }}</span><br>
+                {% for vari in all_products[settings.nullsWrapP].variants %}
+                	<input class="devnullsWrapSelect" type="radio" name="occasion" value="{{ vari.id }}" data-price="{{ vari.price | money }}"  data-image="{{ vari.featured_image.src | img_url:"x300" }}">{{ vari.title }}<br>
+                {% endfor %}
+            </div>
+            <div class="nullsNoteContainer">
+                <textarea class="nullsNote" placeholder="Note..." style="width:240px ;"></textarea>
+            </div>
+
+            <div class="nullsbutton">
+                <input type="button" name="nullsAddButton"
+                       class="nullsAddButton btn btn--small-wide cart__submit cart__submit-control button-primary"
+                       value="{{ settings.nullsButtontext }}">
+            </div>
+            
+
+          </div>
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------>
+          
+          
           <span class="mw-cart-fees"></span>
 
           <div class="cart-subtotal">

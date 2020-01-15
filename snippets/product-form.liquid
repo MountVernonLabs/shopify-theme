@@ -7,11 +7,11 @@
 {% endcomment %}
 
 {% if is_product_modal and settings.quickshop_show_dcb %}
-  {% assign quickshop_smart_buttons = true %}
+  {% assign quickshop_smart_buttons = false %}
 {% endif %}
 
 {% if is_product_modal == false and section.settings.show_dcb %}
-  {% assign product_smart_buttons = true %}
+  {% assign product_smart_buttons = false %}
 {% endif %}
 
 {% if selected_variant.available == false %}

@@ -1998,6 +1998,19 @@ $local-input-padding-vertical-top: $local-input-padding-vertical-base + rem(9px)
   }
 }
 
+// InfiniteOptions Form
+#infiniteoptions-container .form-field-input {
+  border: none !important;
+  font-family: sans-serif !important;
+  text-transform: uppercase !important;
+  font-size: 12px;
+}
+
+#infiniteoptions-container label {
+  min-width:150px;
+  display:inline-block;
+}
+
 .accordion--icon {
 
   svg {

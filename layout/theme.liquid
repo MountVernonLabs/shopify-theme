@@ -77,7 +77,9 @@
     
     {{ 'swiper.min.css' | asset_url | stylesheet_tag }}<!-- swiper slider  -->
     {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+    {{ 'devst-styles.scss.css' | asset_url | stylesheet_tag }}
     {% include 'scm-product-label-head' %}
+    {{ '//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js' | script_tag }}
 </head>
 
   <body>
@@ -130,6 +132,7 @@
             >
       
     </script>
+    {{ 'devst-scripts.js' | asset_url | script_tag }}
 
     {% include 'structured-data' %}
   
